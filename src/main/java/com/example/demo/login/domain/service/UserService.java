@@ -20,7 +20,7 @@ public class UserService {
 
     @Autowired
     //＠Autowiredと一緒に@Qualifierを使用する と二つ以上ある場合のBeanを指定できる
-    @Qualifier("UserDaoJdbcImpl4")
+    @Qualifier("UserDaoNamedJdbcImpl")
     UserDao dao;
 
     /**
