@@ -11,16 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.login.domain.model.User;
 import com.example.demo.login.domain.repository.UserDao;
 
+//トランザクションを使うためには、クラスに@Transactinalアノテーションを付ける。引数を付けるとトランザクションレベルを設定できる。
+//一般的には、ビジネスロジックを担当するサービスクラスに@Transactinalアノテーションを付ける。
+
+@Transactional
 @Service
 public class UserService {
 
     @Autowired
     //＠Autowiredと一緒に@Qualifierを使用する と二つ以上ある場合のBeanを指定できる
-    @Qualifier("UserDaoNamedJdbcImpl")
+    @Qualifier("UserDaoJdbcImpl")
     UserDao dao;
 
     /**
