@@ -12,7 +12,8 @@ th:includeタグ内に別ファイルhtmlが追加 。通常、th:includeの値�
 
 <<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8"></meta>
@@ -48,6 +49,10 @@ th:includeタグ内に別ファイルhtmlが追加 。通常、th:includeの値�
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation">
                         <a th:href="@{'/userList'}">ユーザ管理</a>
+                    </li>
+					<!--sec:authorize属性を使うと権限を持っているユーザーのみhtmlタグが表示-->
+                   <li role="presentation" sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{'/admin'}">アドミン用画面</a>
                     </li>
                 </ul>
             </div>
